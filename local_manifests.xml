@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-    
     <!-- Remote -->
-    <remote name="guthib" fetch="https://github.com" />
+    <remote name="guthib" fetch="https://github.com/" />
 
     <!-- Device Source -->
     <project path="device/xiaomi/earth" name="Kitauji-High-School/android_device_xiaomi_earth" remote="guthib" revision="ASCP-17" />
@@ -10,7 +9,7 @@
     <project path="vendor/xiaomi/earth" name="Kitauji-High-School/vendor_xiaomi_earth" remote="guthib" revision="lineage-24.0" />
 
     <!-- Other Dependencies -->
-    <project path="hardware/xiaomi" name="LineageOS/android_hardware_xiaomi" remote="guthib" revision="lineage-23.2 />
+    <project path="hardware/xiaomi" name="LineageOS/android_hardware_xiaomi" remote="guthib" revision="lineage-23.2" />
     <project path="hardware/mediatek" name="LineageOS/android_hardware_mediatek" remote="guthib" revision="lineage-24.0" />
     <project path="device/mediatek/sepolicy_vndr" name="Kitauji-High-School/android_device_mediatek_sepolicy_vndr" remote="guthib" revision="ascp" />
 
@@ -19,5 +18,4 @@
 
     <!-- Sign -->
     <project path="vendor/custom-priv/keys" name="AbuRider/sign" remote="guthib" revision="ascp" />
-
 </manifest>
