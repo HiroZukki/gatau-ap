@@ -17,5 +17,5 @@
     <project path="vendor/mediatek/ims" name="MillenniumOSS/android_vendor_mediatek_ims" remote="guthib" revision="sixteen-qpr2" />
 
     <!-- Sign -->
-    <project path="vendor/lineage-priv/keys" name="HiroZukki/personal" remote="guthib" revision="keys" />
+    <project path="vendor/lineage-priv/keys" name="HiroZukki/gatau-ap" remote="guthib" revision="keys" />
 </manifest>
