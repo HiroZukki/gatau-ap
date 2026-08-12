@@ -4,18 +4,18 @@
     <remote name="guthib" fetch="https://github.com/" />
 
     <!-- Device Source -->
-    <project path="device/xiaomi/earth" name="Kitauji-High-School/android_device_xiaomi_earth" remote="guthib" revision="ASCP-17" />
-    <project path="kernel/xiaomi/earth" name="Kitauji-High-School/android_kernel_xiaomi_earth" remote="guthib" revision="staging" />
-    <project path="vendor/xiaomi/earth" name="Kitauji-High-School/vendor_xiaomi_earth" remote="guthib" revision="lineage-24.0" />
+    <project path="device/xiaomi/earth" name="HiroZukki/android_device_xiaomi_earth" remote="guthib" revision="Lunaris-16.2" />
+    <project path="kernel/xiaomi/earth" name="LineageOS/android_kernel_xiaomi_earth" remote="guthib" revision="lineage-23.2" />
+    <project path="vendor/xiaomi/earth" name="HiroZukki/vendor_xiaomi_earth" remote="guthib" revision="16.2" />
 
     <!-- Other Dependencies -->
     <project path="hardware/xiaomi" name="LineageOS/android_hardware_xiaomi" remote="guthib" revision="lineage-23.2" />
-    <project path="hardware/mediatek" name="LineageOS/android_hardware_mediatek" remote="guthib" revision="lineage-24.0" />
-    <project path="device/mediatek/sepolicy_vndr" name="Kitauji-High-School/android_device_mediatek_sepolicy_vndr" remote="guthib" revision="ascp" />
+    <project path="hardware/mediatek" name="LineageOS/android_hardware_mediatek" remote="guthib" revision="lineage-23.2" />
+    <project path="device/mediatek/sepolicy_vndr" name="LineageOS/android_device_mediatek_sepolicy_vndr" remote="guthib" revision="lineage-23.2" />
 
     <!-- IMS -->
     <project path="vendor/mediatek/ims" name="MillenniumOSS/android_vendor_mediatek_ims" remote="guthib" revision="sixteen-qpr2" />
 
     <!-- Sign -->
-    <project path="vendor/custom-priv/keys" name="AbuRider/sign" remote="guthib" revision="ascp" />
+    <project path="vendor/lineage-priv/keys" name="HiroZukki/personal" remote="guthib" revision="keys" />
 </manifest>
