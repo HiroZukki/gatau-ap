@@ -3,11 +3,11 @@ name: Kernel Build
 on:
   workflow_dispatch:
     inputs:
-      repository: { description: 'Repo', required: true, default: 'Kitauji-High-School/android_kernel_xiaomi_earth' }
-      branch: { description: 'Branch', required: true, default: '16.2' }
+      repository: { description: 'Repo', required: true, default: 'HiroZukki/kernel_xiaomi_mt6768' }
+      branch: { description: 'Branch', required: true, default: '-' }
       defconfig: { description: 'Defconfig', required: true, default: 'earth_defconfig' }
       zipname : { description: 'zip name', required: false, default: '-' }
-      clang : { description: 'Clang URL', required: true, default: 'https://github.com/AbuRider/scripts/releases/download/20260502/clang-r596125.tar.gz' }
+      # clang : { description: 'Clang URL', required: true, default: 'https://github.com/AbuRider/scripts/releases/download/20260502/clang-r596125.tar.gz' }
       kernelsu_branch: { description: 'KSU Branch', required: false, default: 'master' }
       kernelsu_setup : { description: 'KSU Setup Link', required: false, default: 'https://raw.githubusercontent.com/backslashxx/KernelSU/refs/heads/master/kernel/setup.sh' }
 
@@ -35,15 +35,15 @@ jobs:
         export TZ="Asia/Jakarta"
         echo "BUILD_TIME=$(date +"%Y%m%d")-$(date +"%H%M%S")" >> $GITHUB_ENV
         
-        # Download AOSP Clang 
-        mkdir clang
-        wget -qO- ${{ github.event.inputs.clang }} | tar -xz -C clang
+        # Download clang Clang 
+        wget -qO- https://mirrors.edge.kernel.org/pub/tools/llvm/files/llvm-23.1.0-rc3-x86_64.tar.gz ; tar -xzvf llvm-23.1.0-rc3-x86_64.tar.gz
+        mv llvm-23.1.0-rc3-x86_64 clang
         export PATH=$PWD/clang/bin:$PATH
 
         curl -LSs "${{ github.event.inputs.kernelsu_setup }}" | bash -s ${{ github.event.inputs.kernelsu_branch }}
         export ARCH=arm64
-        export KBUILD_BUILD_USER="kumiko"
-        export KBUILD_BUILD_HOST="kitauji_quartet"
+        export KBUILD_BUILD_USER="uzuki"
+        export KBUILD_BUILD_HOST="sweet_bullet"
         ARGS="O=out ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar NM=llvm-nm STRIP=llvm-strip OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- LLVM=1 LLVM_IAS=1 CONFIG_DEBUG_SECTION_MISMATCH=y"
         
         make $ARGS ${{ github.event.inputs.defconfig }} 2>&1 | tee defconfig.log || true
@@ -51,7 +51,7 @@ jobs:
 
     - name: Anykernel3
       run: |
-        git clone https://github.com/AbuRider/Anykernel3 Anykernel3
+        git clone https://github.com/HiroZukki/Anykernel3 Anykernel3
         if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
           cp out/arch/arm64/boot/Image.gz Anykernel3/
           cp out/arch/arm64/boot/dts/mediatek/mt6768.dtb Anykernel3/dtb
